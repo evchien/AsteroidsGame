@@ -18,15 +18,15 @@ public void draw()
   }
 }
 public void keyPressed(){
-  if(key == '0')
+  if(key == '0' || key == 'h')
     bob.hyperspace();
-  if(key == '4'){
+  if(key == '4' || key == 'a'){
     bob.turn(-10);
   }
-  if(key == '6'){
+  if(key == '6' || key == 'd'){
     bob.turn(10);
   }
-  if(key == '5'){
+  if(key == '5' || key == 's'){
     bob.accelerate(2);
   }
 }
