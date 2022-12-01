@@ -13,31 +13,14 @@ class Asteroid extends Floater{
     myPointDirection = Math.random()*360;
   }
   public void move(){
-    myPointDirection += rotSp;
-    myCenterX += myXspeed;
-    myCenterY += myYspeed; 
-    if(myCenterX >width)  
-      myCenterX = 0;
-    else if (myCenterX<0)
-      myCenterX = width;    
-    if(myCenterY >height)
-      myCenterY = 0;
-    else if (myCenterY < 0)
-      myCenterY = height;
+    turn(rotSp);
+    super.move();
   }
   public void show(){
     noFill();
     stroke(255);
-    //dont change rest of show
-    translate((float)myCenterX, (float)myCenterY);
-    float dRadians = (float)(myPointDirection*(Math.PI/180));
-    rotate(dRadians);
-    beginShape();
-    for (int nI = 0; nI < corners; nI++)
-      vertex(xCorners[nI], yCorners[nI]);
-    endShape(CLOSE);
-    rotate(-1*dRadians);
-    translate(-1*(float)myCenterX, -1*(float)myCenterY);
-    //end of dont change
+    super.show();
   }
+  public float astX(){return (float)myCenterX;}
+  public float astY(){return (float)myCenterY;}
 }
