@@ -23,6 +23,8 @@ public void draw()
   for(int j = 0; j < 5; j++){
     ast.get(j).show();
     ast.get(j).move();
+    float d = dist(ast.get(j).astX(), ast.get(j).astY(), ship.shipX(), ship.shipY());
+    if(d < 20){ast.remove(j);}
   }
 }
 public void keyPressed(){
