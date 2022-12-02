@@ -10,7 +10,7 @@ public void setup()
   for(int i = 0; i < nightSky.length; i++){
     nightSky[i] = new Star();
   }
-  for(int j = 0; j < 5; j++){
+  for(int j = 0; j < 7; j++){
     ast.add(new Asteroid());
   }
 }
@@ -26,7 +26,7 @@ public void draw()
     ast.get(j).show();
     ast.get(j).move();
     float d = dist(ast.get(j).astX(), ast.get(j).astY(), ship.shipX(), ship.shipY());
-    if(d < 20){ast.remove(j); count++;}
+    if(d < 20){ast.remove(j); j--; count++;}
   }
   text("Asteroids Hit: "+count, 50, 20);
 }
