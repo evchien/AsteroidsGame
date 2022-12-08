@@ -1,6 +1,7 @@
 //your variable declarations here
 Spaceship ship = new Spaceship();
 Star[] nightSky = new Star[200];
+ArrayList <Bullet> pew = new ArrayList <Bullet>();
 ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
 int count = 0;
 public void setup() 
@@ -26,8 +27,15 @@ public void draw()
     ast.get(j).show();
     ast.get(j).move();
     float d = dist(ast.get(j).astX(), ast.get(j).astY(), ship.shipX(), ship.shipY());
-    if(d < 20){ast.remove(j); j--; count++;}
+    if(d < 20){ast.remove(j); j--; count++; break;}
+    for(int k = 0; k < pew.size(); k++){
+      pew.get(k).show();
+      pew.get(k).move();
+      float s = dist(ast.get(j).astX(), ast.get(j).astY(), pew.get(k).pewX(), pew.get(k).pewX());
+      if(s < 20){pew.remove(k); k--; ast.remove(j); j--; count++; break;}
+    }
   }
+  
   text("Asteroids Hit: "+count, 50, 20);
 }
 public void keyPressed(){
@@ -39,4 +47,6 @@ public void keyPressed(){
     ship.turn(10);
   if(key == '5' || key == 's')
     ship.accelerate(2);
+  if(key == ' ')
+    pew.add(new Bullet(ship));
 }
